@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bot Devoirs CM2</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#e8f5ff;
+    margin:0;
+}
+
+header{
+    background:#2196F3;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+#chat{
+    width:90%;
+    max-width:700px;
+    margin:20px auto;
+    background:white;
+    height:400px;
+    border-radius:10px;
+    padding:15px;
+    overflow-y:auto;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.message{
+    margin:10px 0;
+}
+
+.user{
+    color:blue;
+    font-weight:bold;
+}
+
+.bot{
+    color:green;
+    font-weight:bold;
+}
+
+#zone{
+    width:90%;
+    max-width:700px;
+    margin:auto;
+    display:flex;
+    gap:10px;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    font-size:16px;
+}
+
+button{
+    padding:12px 20px;
+    font-size:16px;
+    background:#2196F3;
+    color:white;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+button:hover{
+    background:#1565c0;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>🤖 Bot Aide Devoirs CM2</h1>
+<p>Pose une question sur tes devoirs.</p>
+</header>
+
+<div id="chat">
+<div class="message bot">
+🤖 Bonjour ! Je suis ton assistant CM2. Pose-moi une question.
+</div>
+</div>
+
+<div id="zone">
+<input id="question" placeholder="Écris ta question...">
+<button onclick="envoyer()">Envoyer</button>
+</div>
+
+<script>
+
+function envoyer(){
+
+let texte=document.getElementById("question").value;
+
+if(texte=="") return;
+
+let chat=document.getElementById("chat");
+
+chat.innerHTML+="<div class='message user'>👦 "+texte+"</div>";
+
+let t=texte.toLowerCase();
+
+let reponse="Je ne connais pas encore cette réponse. Demande à ton professeur si besoin 😊";
+
+if(t.includes("bonjour"))
+reponse="Bonjour ! Comment puis-je t'aider ?";
+
+else if(t.includes("2+2") || t.includes("2 + 2"))
+reponse="2 + 2 = 4.";
+
+else if(t.includes("5x5") || t.includes("5 x 5"))
+reponse="5 × 5 = 25.";
+
+else if(t.includes("capitale de la france"))
+reponse="La capitale de la France est Paris.";
+
+else if(t.includes("verbe"))
+reponse="Un verbe est un mot qui indique une action ou un état.";
+
+else if(t.includes("nom"))
+reponse="Un nom sert à désigner une personne, un animal, un objet ou un lieu.";
+
+else if(t.includes("adjectif"))
+reponse="Un adjectif donne une précision sur un nom.";
+
+else if(t.includes("merci"))
+reponse="Avec plaisir ! Bon courage pour tes devoirs 📚";
+
+chat.innerHTML+="<div class='message bot'>🤖 "+reponse+"</div>";
+
+chat.scrollTop=chat.scrollHeight;
+
+document.getElementById("question").value="";
+
+}
+
+document.getElementById("question").addEventListener("keypress",function(e){
+if(e.key==="Enter"){
+envoyer();
+}
+});
+
+</script>
+
+</body>
+</html>if(t.includes("bonjour")) 
+    reponse="Bonjour !";
